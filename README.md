@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Discourse App
+
+A platform for thoughtful, structured discussions around content from across the internet.
+
+## Features
+
+- Share and discuss content from across the web
+- Structured replies with categories (agreement, counterpoint, question, expansion, resource)
+- User authentication and profiles
+- Tag-based organization
+
+## Tech Stack
+
+- **Frontend:** Next.js, React, TypeScript, Tailwind CSS
+- **Backend:** Supabase (PostgreSQL, Authentication)
+- **Styling:** shadcn/ui components
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js 18+ and npm
+- A Supabase account
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Setup Supabase
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Create a new project on [Supabase](https://supabase.com)
+2. Once your project is created, go to Project Settings > API to get your API keys
+3. Create a `.env.local` file in the root of the project with the following variables:
+   ```
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
+4. Go to the SQL Editor in your Supabase dashboard and run the SQL schema from `lib/db/schema.ts` (the commented SQL section)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Installation
 
-## Learn More
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-To learn more about Next.js, take a look at the following resources:
+## Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `app/`: Next.js app router pages
+- `components/`: React components
+  - `ui/`: Reusable UI components
+  - `discourse/`: Discourse-specific components
+  - `layout/`: Layout components
+- `lib/`: Utility functions and services
+  - `db/`: Database schema and services
+  - `metadata/`: Link metadata fetching utilities
+- `hooks/`: Custom React hooks
+- `public/`: Static assets
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Database Schema
 
-## Deploy on Vercel
+The application uses the following tables:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `users`: User profiles
+- `discourses`: Discourse topics
+- `replies`: User replies to discourses
+- `tags`: Topic tags
+- `discourse_tags`: Junction table for discourse-tag relationships
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Authentication
+
+The application uses Supabase Authentication with email/password. Users can:
+
+- Sign up with email, password, username, and full name
+- Sign in with email and password
+- Sign out
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

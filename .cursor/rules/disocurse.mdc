@@ -1,0 +1,72 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# Your rule content
+
+- You can @ files here
+- You can use markdown but dont have to
+
+# Discourse App Project Overview
+
+## Vision
+
+The Discourse App is a web application that enables users to initiate and participate in thoughtful, structured discussions (discourses) around content from the internet. The goal is to encourage meaningful dialogue on any shared topic or link, such as blogs, book titles, tweets, Instagram posts, YouTube videos, and more.
+
+## Core Features
+
+### 1. **Link-Based Discourse Initiation**
+- A user can start a new discourse by submitting a link or title (e.g., blog post, YouTube video, tweet, Instagram reel, book title).
+- Metadata about the content (title, image, snippet, etc.) will be auto-fetched to display a preview of the topic.
+- Users can optionally write a short note or description about why they’re starting this discourse.
+
+### 2. **Structured Discourse Threads**
+- Each discourse page will contain organized, highly structured replies.
+- Threads should support:
+  - Categorized responses (e.g., Agreement, Counterpoint, Expansion, Resource Link)
+  - Threaded replies for deeper discussion
+  - Voting or reaction mechanism per reply
+- The UX should resemble a hybrid of Reddit threads, Twitter replies, and forum-style conversations, but in a more curated/structured way.
+
+### 3. **User Participation**
+- Authenticated users can join existing discourses and contribute to any thread.
+- Contributions can be tagged for structure and filtered for readability (e.g., see only “counterpoints”).
+- Optional: AI assistance to summarize or categorize replies.
+
+## Technical Stack
+
+- **Framework:** Next.js (using App Router)
+- **UI Library:** Tailwind CSS (or any component library)
+- **Database:** Supabase / PostgreSQL / Prisma (to be decided)
+- **Authentication:** NextAuth / Clerk / Supabase Auth (to be decided)
+- **Metadata Fetching:** OpenGraph + custom parsers for Twitter, Instagram, YouTube, etc.
+- **AI Integration (optional):** OpenAI API for summarization, categorization, reply suggestions
+
+## Pages & Routes
+
+- `/`: Home feed of trending or recent discourses
+- `/start`: Page to submit a new link and begin a discourse
+- `/d/[slug]`: Discourse detail page with structured thread and content preview
+- `/profile/[username]`: User contributions
+- `/about`: Info page
+
+## Component Ideas
+
+- `LinkPreview`: Fetch and show preview of the shared content
+- `DiscourseThread`: Hierarchical comment structure with filters and tags
+- `ReplyBox`: Input UI for submitting a categorized reply
+- `TagBadge`: Visual tag for response categories (e.g., “Counterpoint”)
+- `SidebarFilters`: Toggle views for Agreement/Counterpoint/etc.
+
+## AI Goals (Optional)
+- Categorize replies automatically based on context
+- Suggest follow-up questions or perspectives to encourage engagement
+- Summarize discourse threads for new visitors
+
+## Future Ideas
+- Bookmark or follow discourses
+- Weekly digest emails of interesting topics
+- Mobile-first design
+- Moderator tools for flagging off-topic replies
