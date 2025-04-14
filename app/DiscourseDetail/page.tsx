@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense } from 'react';
+import React from 'react';
 import { useSearchParams } from 'next/navigation';
 import Header from '@/components/layout/Header';
 import LinkPreview from '@/components/discourse/LinkPreview';
@@ -97,15 +97,7 @@ const mockReplies = [
   },
 ];
 
-export default function DiscourseDetail() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <DiscourseDetailContent />
-    </Suspense>
-  );
-}
-
-function DiscourseDetailContent() {
+const DiscourseDetailPage = () => {
   const searchParams = useSearchParams();
   const slug = searchParams.get('slug');
   const { toast } = useToast();
@@ -179,4 +171,6 @@ function DiscourseDetailContent() {
       </main>
     </div>
   );
-}
+};
+
+export default DiscourseDetailPage;

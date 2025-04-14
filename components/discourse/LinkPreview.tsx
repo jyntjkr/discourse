@@ -11,7 +11,7 @@ interface LinkPreviewProps {
   domain: string;
   favicon?: string;
   author?: string;
-  type?: string;
+  type?: 'youtube' | 'article' | 'twitter' | 'instagram' | 'substack' | 'medium' | 'other';
 }
 
 const LinkPreview: React.FC<LinkPreviewProps> = ({
