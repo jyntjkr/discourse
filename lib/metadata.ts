@@ -99,7 +99,6 @@ export async function fetchOpenGraphMetadata(url: string): Promise<LinkMetadata 
     const title = getMeta('og:title') || $('title').text() || '';
     const description = getMeta('og:description') || getMeta('description') || '';
     const imageUrl = getMeta('og:image') || '';
-    const siteName = getMeta('og:site_name') || '';
     const author = getMeta('author') || '';
     
     // Parse the URL to get the domain
